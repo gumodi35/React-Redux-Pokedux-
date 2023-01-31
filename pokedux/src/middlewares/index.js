@@ -12,4 +12,12 @@ const featuring = (store) => (next) => (actionInfo) => {
     next(updateActionInfo);
 };
 
-export { logger, featuring };
+/* Middleware challenge */ 
+const addActiveProp = (store) => (next) => actionInfo => {
+    const newPayload = actionInfo.action.payload.map(pokemon => pokemon.isActive === true);
+    const newActionInfo = {...actionInfo, payload: 
+    newPayload};
+    next(newActionInfo);
+}
+
+export { logger, featuring, addActiveProp };

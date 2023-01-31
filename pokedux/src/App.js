@@ -4,20 +4,21 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "./components/SearchBar";
 import PokemonList from "./components/PokemonList";
 import { getPokemons } from "./api";
-import { setPokemons } from "./actions";
+import { getPokemonsWithDetails } from "./actions";
 import logo from "./statics/logo.svg";
 import "./App.css";
 
 function App() {
  
-  const pokemons = useSelector(state => state.pokemons)
+  const pokemons = useSelector((state) => state.pokemons)
   const distpatch = useDispatch();
 
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemons();
-      distpatch(setPokemons(pokemonsRes));
+      distpatch(getPokemonsWithDetails(pokemonsRes))
     };
+
 
     fetchPokemons();
   }, []);
@@ -36,3 +37,4 @@ function App() {
 }
 
 export default App;
+
