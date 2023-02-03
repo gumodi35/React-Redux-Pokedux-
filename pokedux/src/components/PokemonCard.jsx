@@ -15,7 +15,9 @@ const PokemonCard = ({ name, image, abilities }) => {
       }
       extra={<StarOutlined />}
     >
-      <Meta description={abilities.filter(ability => (!ability.is_hidden)).map(ability => (ability.ability.name)).join(', ')} 
+      <Meta description={abilities.filter(ability => 
+      (!ability.is_hidden)).map(ability => 
+      (ability.ability.name)).join(', ')} 
 
       />
     </Card>
